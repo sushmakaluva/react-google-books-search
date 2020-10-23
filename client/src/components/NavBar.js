@@ -5,13 +5,13 @@ export default function NavBar() {
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-                <Link className="navbar-brand" to="/">
+                <Link to="/" className="navbar-brand">
                     Google Books
                 </Link>
                 <div>
-                    <ul>
-                        <li><Link to="/search">Search</Link></li>
-                        <li><Link to="/saved">Saved</Link></li>
+                    <ul className="navbar-nav">
+                        <li className="nav-item"><Link to="/search" className={window.location.pathname === "/search" ? "nav-link active" : "nav-link"}>Search</Link></li>
+                        <li className="nav-item"><Link to="/saved" className={window.location.pathname === "/saved" ? "nav-link active" : "nav-link"}>Saved</Link></li>
                     </ul>
                 </div>
 
