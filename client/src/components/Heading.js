@@ -11,7 +11,7 @@ export default function Heading() {
                 <Row size="md-12">
                     <Col>
                         <Jumbotron>
-                            <h1>(React) Google Books Search</h1>
+                            <h1><b>(React) Google Books Search</b></h1>
                             <p>Search for and Save Books of Interest</p>
                         </Jumbotron>
                     </Col>
