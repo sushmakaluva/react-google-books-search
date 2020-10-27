@@ -1,13 +1,12 @@
 import React from 'react';
-import Container from '../components/Container.js';
+import Container from "@material-ui/core/Container";
 import Jumbotron from '../components/Jumbotron.js';
-import Row from '../components/Row.js';
-import Col from '../components/Col.js';
+import {Row, Col } from "./Grid";
 
 export default function Heading() {
     return (
         <div>
-            <Container>
+            <Container style={{ border: "1px solid #cecece" }}  >
                 <Row size="md-12">
                     <Col>
                         <Jumbotron>
