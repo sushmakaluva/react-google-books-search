@@ -9,6 +9,11 @@ module.exports = {
   list: function () {
     return dbFav
       .find({})
+  },
+
+  delete:function(id){
+    return dbFav
+    .deleteOne({_id:id})
   }
 }
 

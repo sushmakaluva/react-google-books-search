@@ -1,33 +1,31 @@
-import React,{useState} from 'react';
-import { Card, Button, Row, Jumbotron, Container } from 'react-bootstrap';
+import React, { useState, useRef } from 'react';
+import { Card, Button, Row, Jumbotron, Container, Form } from 'react-bootstrap';
 import API from '../utils/API';
 
 export default function SearchResults(props) {
 
-    const [formObject, setFormObject] = useState({
-        title: "",
-        sub_title: "",
-        image: "",
-        description: "",
-        rating: "",
-    })
-
-
-    function saveAsFavorite() {
+    function saveAsFavorite(book) {
         API.saveFavorite({
-            title: formObject.title,
-            sub_title: formObject.sub_title,
-            image: formObject.image,
-            description: formObject.description,
-            rating: formObject.rating
+            title: book.volumeInfo.title,
+            authors: book.volumeInfo.authors,
+            image: book.volumeInfo.imageLinks.smallThumbnail,
+            description: book.volumeInfo.description,
+            rating: book.volumeInfo.averageRating,
+            infoLink: book.volumeInfo.infoLink,
         })
+            .then(function (response) {
+              alert('Book saved')
+            })
+            .catch(e => {
+                alert(e.error);
+            });
     }
     return (
         <div>
             <h3 style={{ margin: "20px" }}> Results :</h3>
             {props.books.map(book =>
                 (<Jumbotron >
-                    <Row key={book.volumeInfo.title}>
+                    <Row key={book.id}>
                         <Container style={{ border: "2px solid black", padding: "10px", margin: "20px" }}>
                             <Card>
                                 <Card.Title name="title"><b>{book.volumeInfo.title} </b></Card.Title>
@@ -37,9 +35,10 @@ export default function SearchResults(props) {
                                     {book.volumeInfo.description}
                                 </Card.Text>
                                 <Card.Text name="rating" >Rating : {book.volumeInfo.averageRating}</Card.Text>
-                                <Button variant="primary"><a href={book.volumeInfo.infoLink} target="_blank">View</a></Button>
-                                <Button variant="primary" onClick={saveAsFavorite}>Save</Button>
+                                <Button variant="primary" name="infoLink"><a href={book.volumeInfo.infoLink} target="_blank">View</a></Button>
+                                <Button variant="primary" onClick={() => saveAsFavorite(book)}>Save</Button>
                             </Card>
+
                         </Container>
                     </Row>
                 </Jumbotron>

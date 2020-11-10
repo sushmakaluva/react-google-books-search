@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
+const router = express.Router();
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -8,6 +9,7 @@ const app = express();
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(router);
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -15,8 +17,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Add API routes
-app.use(routes);
-require("./routes")(express.Router());
+require("./routes")(router);
 
 
 // Connect to the Mongo DB

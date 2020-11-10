@@ -11,6 +11,12 @@ export default {
 
     listFavorites : function(){
         return axios.get('/api/favorites')
-    }
+    },
+
+    deleteBook: function (id) {
+        return axios.delete(`/api/favorites/${id}`);
+    },
+
+
 };
 
