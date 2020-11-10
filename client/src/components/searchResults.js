@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import { Card, Button, Row, Jumbotron, Container, Form } from 'react-bootstrap';
+import React from 'react';
+import { Card, Button, Row, Jumbotron, Container } from 'react-bootstrap';
 import API from '../utils/API';
 
 export default function SearchResults(props) {
@@ -22,7 +22,7 @@ export default function SearchResults(props) {
     }
     return (
         <div>
-            <h3 style={{ margin: "20px" }}> Results :</h3>
+            {(props.books)?(<h3 style={{ margin: "20px" }}> Results :</h3>):" "}
             {props.books.map(book =>
                 (<Jumbotron >
                     <Row key={book.id}>
@@ -35,7 +35,7 @@ export default function SearchResults(props) {
                                     {book.volumeInfo.description}
                                 </Card.Text>
                                 <Card.Text name="rating" >Rating : {book.volumeInfo.averageRating}</Card.Text>
-                                <Button variant="primary" name="infoLink"><a href={book.volumeInfo.infoLink} target="_blank">View</a></Button>
+                                <Button variant="primary" name="infoLink"><a href={book.volumeInfo.infoLink} target="_blank" rel="noopener noreferrer" >View</a></Button>
                                 <Button variant="primary" onClick={() => saveAsFavorite(book)}>Save</Button>
                             </Card>
 

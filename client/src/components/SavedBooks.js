@@ -40,7 +40,7 @@ export default function SavedBooks() {
                                     {favbook.description}
                                 </Card.Text>
                                 <Card.Text name="rating" >Rating : {favbook.rating}</Card.Text>
-                                <Button variant="primary"><a href={favbook.infoLink} target="_blank">View</a></Button>
+                                <Button variant="primary"><a href={favbook.infoLink} target="_blank" rel="noopener noreferrer">View</a></Button>
                                 <Button variant="primary" type="submit" onClick={() => deleteFavBook(favbook._id)}>Delete</Button>
                             </Card>
 
