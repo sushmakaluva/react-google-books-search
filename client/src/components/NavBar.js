@@ -1,22 +1,25 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Nav, NavbarBrand, Navbar } from 'react-bootstrap';
 
 export default function NavBar() {
     return (
         <div>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-                <Link to="/" className="navbar-brand">
-                    Google Books
-                </Link>
-                <div>
-                    <ul className="navbar-nav">
-                        <li className="nav-item"><Link to="/search" className={window.location.pathname === "/search" ? "nav-link active" : "nav-link"}>Search</Link></li>
-                        <li className="nav-item"><Link to="/saved" className={window.location.pathname === "/saved" ? "nav-link active" : "nav-link"}>Saved</Link></li>
-                    </ul>
-                </div>
+            <Navbar className="navbar navbar-expand-lg navbar-dark bg-primary">
+                <NavbarBrand>
+                    <Nav.Link href="/" className="navbar-brand">
+                        Google Books
+                    </Nav.Link>
+                </NavbarBrand>
+                <Nav>
+                    <Nav.Item>
+                        <Nav.Link href="/search">Search</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link href="/saved">Saved</Nav.Link>
+                    </Nav.Item>
 
-            </nav>
-
+                </Nav>
+            </Navbar>
         </div>
     )
 }

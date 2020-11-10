@@ -1,10 +1,8 @@
 import React from 'react';
-import Container from "@material-ui/core/Container";
-import Jumbotron from '../components/Jumbotron.js';
 import NavBar from '../components/NavBar.js';
 import Heading from '../components/Heading.js';
 import SearchBar from '../components/SearchBar.js';
-import {Row, Col } from "../components/Grid";
+import {Jumbotron,Container,Row, Col } from 'react-bootstrap';
 
 export default function NoMatch() {
     return (

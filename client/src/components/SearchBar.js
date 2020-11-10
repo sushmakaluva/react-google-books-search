@@ -1,41 +1,41 @@
-import React,{ useState,useEffect } from 'react';
-import Container from "@material-ui/core/Container";
+import React, { useState } from 'react';
+import { Container, Jumbotron, Form } from 'react-bootstrap';
 import API from '../utils/API.js';
 import SearchResults from './SearchResults';
 
 export default function SearchBar() {
 
-    const [books, setbooks] = useState([]);
+    const [books, setBooks] = useState([]);
     const [search, setSearch] = useState("");
-
-    useEffect(() => {
-        API.getBooks()
-    });
 
     const handleInputChange = (e) => {
         const { value } = e.target;
         setSearch(value);
-      };
-    
+    };
+
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
         API.getBooks(search)
-            .then(response => setbooks(response.data))
+            .then(response => setBooks(response.data.items))
             .catch(err => console.log(err));
     }
 
     return (
         <div>
-            <Container>
-                <h1>Book Search</h1>
-                <p>Book :</p>
-                <form className="search-form" onSubmit={handleFormSubmit}>
-                    <input type="text" className="search-bar" name="BookSearch" value={search} onChange={handleInputChange}></input>
-                    <button type="Submit" className="search-button">Search</button>
-                </form>
+            <Container style={{ border: "2px solid black", height: 140, margin: "30px", justifyContent: "center", alignItems: "center" }}>
+                <Jumbotron style={{ margin: "30px" }}>
+                    <h3>Book Search</h3>
+                    <Form className="form-horizontal" onSubmit={handleFormSubmit}>
+                        <Form.Group>
+                            <Form.Control size="lg" type="text" className="search-bar" name="BookSearch" value={search} onChange={handleInputChange} style={{ width: "100%" }} />
+                            <button type="Submit" className="search-button" style={{ float: "right", margin: "10px" }}>Search</button>
+                        </Form.Group>
+                    </Form>
+                </Jumbotron>
             </Container>
-            <SearchResults books={books}/>
+            <SearchResults books={books} />
         </div>
     )
 }
+
