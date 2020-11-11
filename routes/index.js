@@ -19,6 +19,11 @@ module.exports = function (router) {
             .catch(err => res.status(400).json({ error: err.message }))
   })
 
+  // If no API routes are hit, send the React app
+    router.all('*', function (req, res) {
+        res.sendFile(path.join(__dirname, "../client/build/index.html"));
+    });
+
 
 }
 
