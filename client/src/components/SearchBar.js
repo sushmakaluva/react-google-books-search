@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Jumbotron, Form } from 'react-bootstrap';
 import API from '../utils/API.js';
-import SearchResults from './SearchResults';
+import SR from './SearchResult';
 
 export default function SearchBar() {
 
@@ -34,7 +34,7 @@ export default function SearchBar() {
                     </Form>
                 </Jumbotron>
             </Container>
-            <SearchResults books={books} />
+            <SR books={books} />
         </div>
     )
 }

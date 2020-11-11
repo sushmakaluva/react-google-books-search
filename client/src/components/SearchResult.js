@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Button, Row, Jumbotron, Container } from 'react-bootstrap';
 import API from '../utils/API';
 
-export default function SearchResults(props) {
+export default function SR(props) {
 
     function saveAsFavorite(book) {
         API.saveFavorite({
@@ -14,7 +14,7 @@ export default function SearchResults(props) {
             infoLink: book.volumeInfo.infoLink,
         })
             .then(function (response) {
-              alert('Book saved')
+                alert('Book saved')
             })
             .catch(e => {
                 alert(e.error);
@@ -22,7 +22,7 @@ export default function SearchResults(props) {
     }
     return (
         <div>
-            {(props.books)?(<h3 style={{ margin: "20px" }}> Results :</h3>):" "}
+            {(props.books) ? (<h3 style={{ margin: "20px" }}> Results :</h3>) : " "}
             {props.books.map(book =>
                 (<Jumbotron >
                     <Row key={book.id}>
