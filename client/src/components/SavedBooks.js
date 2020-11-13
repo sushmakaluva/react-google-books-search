@@ -43,7 +43,6 @@ export default function SavedBooks() {
                                 <Button variant="primary"><a href={favbook.infoLink} target="_blank" rel="noopener noreferrer">View</a></Button>
                                 <Button variant="primary" type="submit" onClick={() => deleteFavBook(favbook._id)}>Delete</Button>
                             </Card>
-
                         </Container>
                     </Row>
                 </Jumbotron>
